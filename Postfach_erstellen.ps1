@@ -2,7 +2,7 @@
 $Username = $args[0]
 
 # Login
-$Username = "cladm"
+$Username = "admmarius"
 $Password = Get-Content "\\bkh-lohr.local\dfs\abteilung$\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Import\Passwort_Serveradmin.txt" | ConvertTo-SecureString
 $UserCredential = New-Object System.Management.Automation.PsCredential($Username, $Password)
 

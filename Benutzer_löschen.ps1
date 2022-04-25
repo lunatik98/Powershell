@@ -1,16 +1,16 @@
 ﻿### HEAD ###
 
-$Users = Get-Content "\\bkh-lohr.local\dfs\abteilung$\EDV\Soft_Hardware\_Skripts\Import\EasyJob\scripts\Benutzer_löschen.txt"
-
-$Folder1 = "Z:\Ordnerumleitung$\Folder\$User"
-$Folder2 = "Z:\Ordnerumleitung$\Desktop\$User"
-$Folder3 = "Z:\user$\$User"
-$Folder4 = "Z:\Profile$\$User.V6"
+$Users = Get-Content "\\bkh-lohr.local\dfs\abteilung$\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Import\Benutzer_löschen.txt"
 
 ### MAIN ###
 
 foreach ($User in $Users)
 {
+    $Folder1 = "\\bkh-lohr.local\dfs\Ordnerumleitung$\Folder\$User"
+    $Folder2 = "\\bkh-lohr.local\dfs\Ordnerumleitung$\Desktop\$User"
+    $Folder3 = "\\bkh-lohr.local\dfs\user$\$User"
+    $Folder4 = "\\bkh-lohr.local\dfs\Profile$\$User.V6"
+
     if (Get-ADUser -Filter {SamAccountName -eq $User})
         {
         Remove-ADUser -Identity $User -Confirm:$false

@@ -1,5 +1,5 @@
 ﻿# Login
-$Username = "cladm"
+$Username = "admmarius"
 $Password = Get-Content "\\bkh-lohr.local\dfs\abteilung$\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Import\Passwort_Serveradmin.txt" | ConvertTo-SecureString
 $UserCredential = New-Object System.Management.Automation.PsCredential($Username, $Password)
 
@@ -12,7 +12,7 @@ $ParamsConnection = @{
 $Session = New-PSSession @ParamsConnection    
 Import-PSSession -CommandName Enable-Mailbox $Session -AllowClobber | Out-Null
 
-$CSV = "M:\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Import\Benutzer.csv"
+$CSV = "\\bkh-lohr.local\dfs\abteilung$\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Import\Benutzer.csv"
 
 # CSV importieren
 $ADUsers = Import-csv $CSV -Delimiter ";" -Encoding UTF8

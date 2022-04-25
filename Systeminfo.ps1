@@ -3,7 +3,7 @@ $Computer = $args[0]
 
 # Login
 $Username = "cladm"
-$Password = Get-Content "M:\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Passwort_Clientadmin.txt" | ConvertTo-SecureString
+$Password = Get-Content "M:\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Import\Passwort_Clientadmin.txt" | ConvertTo-SecureString
 $UserCredential = New-Object System.Management.Automation.PsCredential($Username, $Password)
 
 $Ping = Test-Connection -ComputerName $Computer -Quiet -Count 1
