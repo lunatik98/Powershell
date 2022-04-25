@@ -1,16 +1,18 @@
 ﻿### HEAD ###
 
-Clear-Host
+# Name des öffentlichen Ordners
+$Name = $args[0] 
 
-$UserCredential = Get-Credential
+# Soll ein Authorzugriff erstellt werden?
+$Author = $args[1] 
 
-$Name = $args[0]
-$Author = $args[1]
-$Reviewer = $args[2]
+# Soll ein Prüferzugriff erstellt werden?
+$Reviewer = $args[2] 
 
-#$Name = Read-Host "Name des öffentlichen Ordners"
-#$Author = Read-Host "Soll ein Authorzugriff erstellt werden?"
-#$Reviewer = Read-Host "Soll ein Prüferzugriff erstellt werden?"
+# Login
+$Username = "cladm"
+$Password = Get-Content "\\bkh-lohr.local\dfs\abteilung$\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Import\Passwort_Serveradmin.txt" | ConvertTo-SecureString
+$UserCredential = New-Object System.Management.Automation.PsCredential($Username, $Password)
 
 # Verbindung zu Exchange
 $ParamsConnection = @{

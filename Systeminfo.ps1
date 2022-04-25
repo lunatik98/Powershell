@@ -1,14 +1,15 @@
-﻿Clear-Host
+﻿#Computername
+$Computer = $args[0] 
 
-$Computer = $args[0]
-
-#$Computer =  Read-Host "Computername"
+# Login
+$Username = "cladm"
+$Password = Get-Content "M:\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Passwort_Clientadmin.txt" | ConvertTo-SecureString
+$UserCredential = New-Object System.Management.Automation.PsCredential($Username, $Password)
 
 $Ping = Test-Connection -ComputerName $Computer -Quiet -Count 1
 
 if ($Ping -eq "true")
 {
-    $UserCredential = Get-Credential
   
     $computerSystem = get-wmiobject Win32_ComputerSystem -Computer $Computer -Credential $UserCredential
     $computerBIOS = get-wmiobject Win32_BIOS -Computer $Computer -Credential $UserCredential
