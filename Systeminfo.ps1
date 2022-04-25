@@ -2,9 +2,10 @@
 $Computer = $args[0] 
 
 # Login
+$Path = "\\bkh-lohr.local\dfs\abteilung$\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Import\Passwort_Clientadmin.txt"
 $Username = "cladm"
-$Password = Get-Content "M:\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Import\Passwort_Clientadmin.txt" | ConvertTo-SecureString
-$UserCredential = New-Object System.Management.Automation.PsCredential($Username, $Password)
+$Password =  Get-Content $Path | ConvertTo-SecureString -AsPlainText -Force
+$UserCredential = New-Object System.Management.Automation.PsCredential $Username, $Password
 
 $Ping = Test-Connection -ComputerName $Computer -Quiet -Count 1
 

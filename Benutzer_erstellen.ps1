@@ -1,7 +1,8 @@
 ﻿# Login
+$Path = "\\bkh-lohr.local\dfs\abteilung$\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Import\Passwort_Serveradmin.txt"
 $Username = "admmarius"
-$Password = Get-Content "\\bkh-lohr.local\dfs\abteilung$\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Import\Passwort_Serveradmin.txt" | ConvertTo-SecureString
-$UserCredential = New-Object System.Management.Automation.PsCredential($Username, $Password)
+$Password =  Get-Content $Path | ConvertTo-SecureString -AsPlainText -Force
+$UserCredential = New-Object System.Management.Automation.PsCredential $Username, $Password
 
 $ParamsConnection = @{
     ConfigurationName   = "Microsoft.Exchange"
