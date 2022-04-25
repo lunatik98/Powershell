@@ -1,12 +1,10 @@
 ﻿### HEAD ###
 
-Clear-Host
-
+# Name des Abteilungslaufwerks
 $Name = $args[0]
-$Read = $args[1]
 
-#$Name = Read-Host "Name des Abteilungslaufwerks"
-#$Read = Read-Host "Soll ein Lesezugriff erstellt werden?"
+# Soll ein Lesezugriff erstellt werden?
+$Read = $args[1]
 
 $NameWrite = $Name
 $NameWrite += "_schreiben"
