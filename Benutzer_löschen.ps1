@@ -1,8 +1,6 @@
 ﻿### HEAD ###
 
-Clear-Host
-
-$Users = Get-Content "M:\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Benutzer_löschen.txt"
+$Users = Get-Content "\\bkh-lohr.local\dfs\abteilung$\EDV\Soft_Hardware\_Skripts\Import\EasyJob\scripts\Benutzer_löschen.txt"
 
 $Folder1 = "Z:\Ordnerumleitung$\Folder\$User"
 $Folder2 = "Z:\Ordnerumleitung$\Desktop\$User"
