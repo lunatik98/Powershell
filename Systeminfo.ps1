@@ -1,13 +1,13 @@
-﻿#Computername
+﻿# Computername
 $Computer = $args[0] 
 
 # Login
-$Path = "\\bkh-lohr.local\dfs\abteilung$\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Import\Passwort_Clientadmin.txt"
+$TXT = "\\bkh-lohr.local\dfs\abteilung$\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Import\Passwort_Clientadmin.txt"
 $Username = "cladm"
-$Password =  Get-Content $Path | ConvertTo-SecureString -AsPlainText -Force
+$Password =  Get-Content $TXT | ConvertTo-SecureString -AsPlainText -Force
 $UserCredential = New-Object System.Management.Automation.PsCredential $Username, $Password
 
-$Ping = Test-Connection -ComputerName $Computer -Quiet -Count 1
+$Ping = Test-Connection -ComputerName $Computer -Quiet -Count 1 
 
 if ($Ping -eq "true")
 {
