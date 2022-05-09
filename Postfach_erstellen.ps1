@@ -1,5 +1,5 @@
 ﻿# Benutzername
-$Username2 = $args[0]
+$User = $args[0]
 
 # Login
 $Path = "\\bkh-lohr.local\dfs\abteilung$\EDV\Soft_Hardware\_Skripts\EasyJob\scripts\Import\Passwort_Serveradmin.txt"
@@ -16,6 +16,6 @@ $ParamsConnection = @{
 $Session = New-PSSession @ParamsConnection    
 Import-PSSession $Session -CommandName Enable-Mailbox -AllowClobber | Out-Null
 
-Enable-Mailbox -Identity $Username2@bkh-lohr.local
+Enable-Mailbox -Identity $User@bkh-lohr.local
 
 Remove-PSSession $Session
