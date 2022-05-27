@@ -1,4 +1,7 @@
-﻿# Benutzername
+﻿# Get-Mailbox Fehler verbergen
+$ErrorActionPreference =  "SilentlyContinue"
+
+# Benutzername
 $User = $args[0]
 
 # Login
@@ -14,8 +17,26 @@ $ParamsConnection = @{
     Credential          = $UserCredential
 }
 $Session = New-PSSession @ParamsConnection    
-Import-PSSession $Session -CommandName Enable-Mailbox -AllowClobber | Out-Null
+Import-PSSession $Session -CommandName Enable-Mailbox,Get-Mailbox -AllowClobber | Out-Null
 
-Enable-Mailbox -Identity $User@bkh-lohr.local
+if (Get-Mailbox -Identity $User@bkh-lohr.local)
+{
+    Write-Host "Postfach existiert bereits"
+}
+
+else 
+{
+    Enable-Mailbox -Identity $User@bkh-lohr.local -Database "MDB19-200MB" | Out-Null
+
+    if (Get-Mailbox -Identity $User@bkh-lohr.local)
+    {
+        Write-Host "Postfach wurde erstellt"
+    }
+
+    else
+    {
+        Write-Host "Postfach konnte nicht erstellt werden"
+    }
+}
 
 Remove-PSSession $Session
