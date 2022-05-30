@@ -89,7 +89,7 @@ Invoke-Command -Session $Session -ScriptBlock{
             Start-Sleep -s 10
 
             # Postfach erstellen
-            Enable-Mailbox -Identity "$Username@bkh-lohr.local" | Out-Null
+            Enable-Mailbox -Identity $Username@bkh-lohr.local -Database "MDB19-200MB" | Out-Null
             Write-Host "Postfach für $Username wurde erstellt"
 
             # Benutzer zu Gruppen hinzufügen
